@@ -1252,5 +1252,20 @@ describe(getName(), () => {
       const res = await lookup.lookupUpdates(config);
       expect(res).toMatchSnapshot();
     });
+    it('handles replacements', async () => {
+      config.currentValue = '1.0.0';
+      config.depName = 'q';
+      config.packageRules = [
+        {
+          matchPackageNames: ['q'],
+          replacementName: 'r',
+          replacementVersion: '2.0.0',
+        },
+      ];
+      config.datasource = datasourceNpmId;
+      nock('https://registry.npmjs.org').get('/q').reply(200, qJson);
+      const res = await lookup.lookupUpdates(config);
+      expect(res).toMatchSnapshot();
+    });
   });
 });
