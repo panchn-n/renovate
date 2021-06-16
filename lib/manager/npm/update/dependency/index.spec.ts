@@ -192,6 +192,7 @@ describe(getName(), () => {
       });
       expect(testContent).toBeNull();
     });
+
     it('returns null if empty file', () => {
       const upgrade = {
         depType: 'dependencies',
@@ -204,6 +205,7 @@ describe(getName(), () => {
       });
       expect(testContent).toBeNull();
     });
+
     it('replaces package', () => {
       const upgrade = {
         depType: 'dependencies',

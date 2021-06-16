@@ -280,6 +280,7 @@ describe(getName(), () => {
     });
     expect(res.sourceUrl).toEqual('https://github.com/Jasig/cas');
   });
+
   it('applies replacements', async () => {
     npmDatasource.getReleases.mockResolvedValue({
       releases: [{ version: '1.0.0' }],
